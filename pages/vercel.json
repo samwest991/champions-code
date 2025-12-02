@@ -1,0 +1,8 @@
+{
+  "version": 2,
+  "routes": [
+    { "src": "/", "dest": "/index.html" },
+    { "src": "/assessment", "dest": "/assessment.html" },
+    { "src": "/results", "dest": "/results.html" }
+  ]
+}
