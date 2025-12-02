@@ -1,0 +1,37 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Your Results • The Champions Code</title>
+<style>
+  body{margin:0;background:#000;color:#fff;font:16px/1.5 system-ui,Arial}
+  .wrap{max-width:900px;margin:0 auto;padding:24px}
+  .card{border:1px solid #ffffff22;border-radius:12px;padding:16px;margin:10px 0}
+  .tag{display:inline-block;background:#d4af37;color:#000;padding:2px 8px;border-radius:999px;font-weight:700}
+  h1,h2{letter-spacing:.3px}
+</style>
+</head><body><div class="wrap">
+  <h1>Your Champion’s Code</h1>
+  <p style="color:#d4af37">Based on your 25-question assessment</p>
+  <div id="out"></div>
+  <div class="card">
+    <strong>Upgrade to Pro</strong> for full 8-code chart, coaching guide, and resources.
+  </div>
+  <p><a href="/assessment.html" style="color:#d4af37">Retake the assessment</a></p>
+</div>
+<script>
+const data = JSON.parse(localStorage.getItem('cc_last_result')||'null');
+const out = document.getElementById('out');
+if(!data){
+  out.innerHTML='<div class="card">No result found. Please complete the assessment.</div>';
+}else{
+  const {dominant,supporting,weakest,pct}=data;
+  out.innerHTML = `
+    <div class="card"><h2>Dominant: <span class="tag">${dominant}</span></h2>
+      <p>Cue & strengths will go here.</p></div>
+    <div class="card"><h2>Supporting</h2><p>${supporting.join(', ')}</p></div>
+    <div class="card"><h2>Weakest</h2><p>${weakest}</p></div>
+    <div class="card"><h2>Percentages</h2>
+      <pre style="white-space:pre-wrap">${JSON.stringify(pct,null,2)}</pre>
+    </div>`;
+}
+</script>
+</body></html>
